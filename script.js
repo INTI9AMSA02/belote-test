@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const addPointsBtn = document.getElementById("add-points");
     const teaseBtns = document.querySelectorAll(".tease");
     const roundsTableBody = document.getElementById("rounds-table-body");
+    const winsTableBody = document.getElementById("wins-table-body");
     const team1Header = document.getElementById("team1-header");
     const team2Header = document.getElementById("team2-header");
 
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 winningTeam = 2;
             }
+            updateWinsTable(winningTeam);
             resetGame();
         }
 
@@ -129,9 +131,11 @@ document.addEventListener("DOMContentLoaded", function() {
             if (team === 1) {
                 team1WinsValue += 7;
                 flashWinner(1);
+                updateWinsTable(1, true);
             } else if (team === 2) {
                 team2WinsValue += 7;
                 flashWinner(2);
+                updateWinsTable(2, true);
             }
             team1Wins.textContent = `فوز: ${team1WinsValue}`;
             team2Wins.textContent = `فوز: ${team2WinsValue}`;
@@ -145,5 +149,18 @@ document.addEventListener("DOMContentLoaded", function() {
             row.innerHTML = `<td>${index + 1}</td><td>${round.team1} (${team1Name})</td><td>${round.team2} (${team2Name})</td>`;
             roundsTableBody.appendChild(row);
         });
+    }
+
+    function updateWinsTable(winningTeam, isTease = false) {
+        const currentTime = new Date().toLocaleTimeString();
+        const row = document.createElement("tr");
+
+        if (winningTeam === 1) {
+            row.innerHTML = `<td>${team1Name}</td><td>${currentTime}</td><td>${isTease ? 7 : team1WinsValue}</td>`;
+        } else if (winningTeam === 2) {
+            row.innerHTML = `<td>${team2Name}</td><td>${currentTime}</td><td>${isTease ? 7 : team2WinsValue}</td>`;
+        }
+
+        winsTableBody.appendChild(row);
     }
 });
