@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.score-board {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px; /* تغيير العرض الأقصى ليتناسب مع الجوال */
+    margin: auto; /* توسيط اللوحة على الشاشة */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.team {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: calc(100% - 18px); /* جعل عرض الحقل يمتد على كامل العرض مع هامش */
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: #999;
+}
+
+.score,
+.wins {
+    display: inline-block;
+    min-width: 60px;
+    padding: 5px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.actions {
+    text-align: center;
+}
+
+#add-points,
+.tease {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#add-points:hover,
+.tease:hover {
+    background-color: #0056b3;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
