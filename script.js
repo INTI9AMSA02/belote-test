@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     team1WinsValue += 1;
                 }
-                winningTeam = team1Wins;
+                winningTeam = 1;
             } else if (team2ScoreValue > team1ScoreValue) {
                 if (team2ScoreAfterThirdRound !== null && team2ScoreAfterThirdRound <= 26) {
                     team2WinsValue += 2;
@@ -78,17 +78,31 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     team2WinsValue += 1;
                 }
-                winningTeam = team2Wins;
+                winningTeam = 2;
             }
-
-            // إذا كانت النقاط متساوية ولاعب كل منهما أكثر من 99 نقطة، لا نفعل شيئًا ونستمر في اللعب
-            if (winningTeam !== null) {
-                flashWinningTeam(winningTeam);
-                resetGame();
-            }
+            resetGame();
         }
+
         team1Wins.textContent = `فوز: ${team1WinsValue}`;
         team2Wins.textContent = `فوز: ${team2WinsValue}`;
+
+        if (winningTeam) {
+            flashWinner(winningTeam);
+        }
+    }
+
+    function flashWinner(team) {
+        if (team === 1) {
+            team1Wins.classList.add("flash");
+            setTimeout(() => {
+                team1Wins.classList.remove("flash");
+            }, 1000);
+        } else if (team === 2) {
+            team2Wins.classList.add("flash");
+            setTimeout(() => {
+                team2Wins.classList.remove("flash");
+            }, 1000);
+        }
     }
 
     function resetGame() {
@@ -107,13 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("team2-points").value = "";
     }
 
-    function flashWinningTeam(element) {
-        element.classList.add("flash");
-        setTimeout(() => {
-            element.classList.remove("flash");
-        }, 1000);
-    }
-
     teaseBtns.forEach(function(btn) {
         btn.addEventListener("click", function() {
             updateTeamNames();
@@ -121,10 +128,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const team = parseInt(btn.dataset.team);
             if (team === 1) {
                 team1WinsValue += 7;
-                flashWinningTeam(team1Wins);
+                flashWinner(1);
             } else if (team === 2) {
                 team2WinsValue += 7;
-                flashWinningTeam(team2Wins);
+                flashWinner(2);
             }
             team1Wins.textContent = `فوز: ${team1WinsValue}`;
             team2Wins.textContent = `فوز: ${team2WinsValue}`;
