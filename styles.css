@@ -67,7 +67,7 @@ input[type="number"]::placeholder {
     background-color: #e9ecef; /* لون خلفية أفتح */
     border-radius: 5px;
     margin-left: 10px;
-    font-size: 16px; /* زيادة حجم الخط */
+    font-size: 30px; /* زيادة حجم الخط */
 }
 
 .actions {
@@ -112,4 +112,14 @@ th {
 
 tr:nth-child(even) {
     background-color: #f8f9fa; /* لون خلفية مختلف للصفوف الزوجية */
+}
+
+.flash {
+    animation: flash-animation 1s;
+}
+
+@keyframes flash-animation {
+    0% { background-color: yellow; }
+    50% { background-color: red; }
+    100% { background-color: yellow; }
 }
