@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة النتائج</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
@@ -25,13 +14,13 @@
                 <label for="team1-name">الفريق 1:</label>
                 <input type="text" id="team1-name" placeholder="اسم الفريق الأول">
                 <span class="score" id="team1-score">0</span>
-                <span class="wins" id="team1-wins">فكتوارات: 0</span>
+                <span class="wins" id="team1-wins">فوز: 0</span>
             </div>
             <div class="team">
                 <label for="team2-name">الفريق 2:</label>
                 <input type="text" id="team2-name" placeholder="اسم الفريق الثاني">
                 <span class="score" id="team2-score">0</span>
-                <span class="wins" id="team2-wins">فكتوارات: 0</span>
+                <span class="wins" id="team2-wins">فوز: 0</span>
             </div>
             <div class="actions">
                 <input type="number" id="team1-points" placeholder="نقاط الفريق الأول">
@@ -43,9 +32,9 @@
             <table id="rounds-table">
                 <thead>
                     <tr>
-                        <th>الجولة </th>
-                        <th>الفريق 1</th>
-                        <th>الفريق 2</th>
+                        <th>الجولة</th>
+                        <th id="team1-header">الفريق 1</th>
+                        <th id="team2-header">الفريق 2</th>
                     </tr>
                 </thead>
                 <tbody id="rounds-table-body">
