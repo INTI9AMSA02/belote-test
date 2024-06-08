@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة النتائج</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="score-board">
+            <h1>لوحة النتائج</h1>
+            <div class="team">
+                <label for="team1-name">الفريق 1:</label>
+                <input type="text" id="team1-name" placeholder="اسم الفريق الأول">
+                <span class="score" id="team1-score">0</span>
+                <span class="wins" id="team1-wins">فكتوارات: 0</span>
+            </div>
+            <div class="team">
+                <label for="team2-name">الفريق 2:</label>
+                <input type="text" id="team2-name" placeholder="اسم الفريق الثاني">
+                <span class="score" id="team2-score">0</span>
+                <span class="wins" id="team2-wins">فكتوارات: 0</span>
+            </div>
+            <div class="actions">
+                <input type="number" id="team1-points" placeholder="نقاط الفريق الأول">
+                <input type="number" id="team2-points" placeholder="نقاط الفريق الثاني">
+                <button id="add-points">إضافة النقاط</button>
+                <button class="tease" data-team="1">تيسه للفريق 1</button>
+                <button class="tease" data-team="2">تيسه للفريق 2</button>
+            </div>
+            <table id="rounds-table">
+                <thead>
+                    <tr>
+                        <th>الجولة </th>
+                        <th>الفريق 1</th>
+                        <th>الفريق 2</th>
+                    </tr>
+                </thead>
+                <tbody id="rounds-table-body">
+                    <!-- ستتم إضافة صفوف الجولات هنا تلقائياً -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
