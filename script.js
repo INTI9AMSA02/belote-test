@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const team1NameInput = document.getElementById("team1-name");
+    const team2NameInput = document.getElementById("team2-name");
     const team1Score = document.getElementById("team1-score");
     const team2Score = document.getElementById("team2-score");
     const team1Wins = document.getElementById("team1-wins");
@@ -6,14 +8,27 @@ document.addEventListener("DOMContentLoaded", function() {
     const addPointsBtn = document.getElementById("add-points");
     const teaseBtns = document.querySelectorAll(".tease");
     const roundsTableBody = document.getElementById("rounds-table-body");
+    const team1Header = document.getElementById("team1-header");
+    const team2Header = document.getElementById("team2-header");
 
     let team1ScoreValue = 0;
     let team2ScoreValue = 0;
     let team1WinsValue = 0;
     let team2WinsValue = 0;
     let rounds = [];
+    let team1Name = "الفريق 1";
+    let team2Name = "الفريق 2";
+
+    function updateTeamNames() {
+        team1Name = team1NameInput.value || "الفريق 1";
+        team2Name = team2NameInput.value || "الفريق 2";
+        team1Header.textContent = team1Name;
+        team2Header.textContent = team2Name;
+    }
 
     addPointsBtn.addEventListener("click", function() {
+        updateTeamNames();
+        
         const team1Points = parseInt(document.getElementById("team1-points").value) || 0;
         const team2Points = parseInt(document.getElementById("team2-points").value) || 0;
 
@@ -33,23 +48,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function checkWinner() {
-        if (team1ScoreValue >= 100) {
-            if (team2ScoreValue === 0) {
-                team1WinsValue += 2;
-            } else {
-                team1WinsValue += 1;
+        if (team1ScoreValue >= 100 || team2ScoreValue >= 100) {
+            if (team1ScoreValue > team2ScoreValue) {
+                team1WinsValue += (team2ScoreValue === 0) ? 2 : 1;
+                resetGame();
+            } else if (team2ScoreValue > team1ScoreValue) {
+                team2WinsValue += (team1ScoreValue === 0) ? 2 : 1;
+                resetGame();
             }
-            resetGame();
-        } else if (team2ScoreValue >= 100) {
-            if (team1ScoreValue === 0) {
-                team2WinsValue += 2;
-            } else {
-                team2WinsValue += 1;
-            }
-            resetGame();
+            // إذا كانت النقاط متساوية ولاعب كل منهما أكثر من 99 نقطة، لا نفعل شيئًا ونستمر في اللعب
         }
-        team1Wins.textContent = `Wins: ${team1WinsValue}`;
-        team2Wins.textContent = `Wins: ${team2WinsValue}`;
+        team1Wins.textContent = `فوز: ${team1WinsValue}`;
+        team2Wins.textContent = `فوز: ${team2WinsValue}`;
     }
 
     function resetGame() {
@@ -67,14 +77,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     teaseBtns.forEach(function(btn) {
         btn.addEventListener("click", function() {
+            updateTeamNames();
+            
             const team = parseInt(btn.dataset.team);
             if (team === 1) {
                 team1WinsValue += 7;
             } else if (team === 2) {
                 team2WinsValue += 7;
             }
-            team1Wins.textContent = `Wins: ${team1WinsValue}`;
-            team2Wins.textContent = `Wins: ${team2WinsValue}`;
+            team1Wins.textContent = `فوز: ${team1WinsValue}`;
+            team2Wins.textContent = `فوز: ${team2WinsValue}`;
         });
     });
 
@@ -82,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         roundsTableBody.innerHTML = "";
         rounds.forEach(function(round, index) {
             const row = document.createElement("tr");
-            row.innerHTML = `<td>${index + 1}</td><td>${round.team1}</td><td>${round.team2}</td>`;
+            row.innerHTML = `<td>${index + 1}</td><td>${round.team1} (${team1Name})</td><td>${round.team2} (${team2Name})</td>`;
             roundsTableBody.appendChild(row);
         });
     }
