@@ -1,9 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     direction: rtl;
-    background-color: #f2f2f2;
+    background-color: #e9ecef; /* لون خلفية أفتح */
     margin: 0;
     padding: 0;
+    font-size: 16px; /* زيادة حجم الخط الأساسي */
 }
 
 #app {
@@ -19,15 +20,16 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* زيادة الظل لتحسين التباين */
     width: 90%;
-    max-width: 400px; /* تغيير العرض الأقصى ليتناسب مع الجوال */
-    margin: auto; /* توسيط اللوحة على الشاشة */
+    max-width: 400px;
+    margin: auto;
 }
 
 h1 {
-    color: #333;
+    color: #212529; /* لون أغمق للنص */
     margin-bottom: 20px;
+    font-size: 24px; /* زيادة حجم الخط للعنوان */
 }
 
 .team {
@@ -38,31 +40,34 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
+    font-size: 18px; /* زيادة حجم الخط لملصق */
 }
 
 input[type="text"],
 input[type="number"] {
-    padding: 8px;
+    padding: 10px; /* زيادة المساحة الداخلية للحقل */
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #ced4da; /* تغيير لون الحدود ليكون أكثر وضوحًا */
     margin-bottom: 10px;
     box-sizing: border-box;
-    width: calc(100% - 18px); /* جعل عرض الحقل يمتد على كامل العرض مع هامش */
+    width: calc(100% - 22px); /* تعديل العرض ليشمل الحواف الجديدة */
+    font-size: 16px; /* زيادة حجم الخط للحقل */
 }
 
 input[type="text"]::placeholder,
 input[type="number"]::placeholder {
-    color: #999;
+    color: #6c757d; /* لون أكثر وضوحًا للنص البديل */
 }
 
 .score,
 .wins {
     display: inline-block;
     min-width: 60px;
-    padding: 5px;
-    background-color: #f2f2f2;
+    padding: 8px; /* زيادة المساحة الداخلية */
+    background-color: #e9ecef; /* لون خلفية أفتح */
     border-radius: 5px;
     margin-left: 10px;
+    font-size: 16px; /* زيادة حجم الخط */
 }
 
 .actions {
@@ -71,13 +76,14 @@ input[type="number"]::placeholder {
 
 #add-points,
 .tease {
-    padding: 10px 20px;
+    padding: 12px 24px; /* زيادة المساحة الداخلية للأزرار */
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 5px;
+    font-size: 16px; /* زيادة حجم الخط */
 }
 
 #add-points:hover,
@@ -89,19 +95,21 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
+    font-size: 16px; /* زيادة حجم الخط للنص داخل الجدول */
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #dee2e6; /* لون حدود أكثر وضوحًا */
+    padding: 12px; /* زيادة المساحة الداخلية للخلايا */
     text-align: center;
 }
 
 th {
     background-color: #007bff;
     color: #fff;
+    font-size: 18px; /* زيادة حجم الخط للعناوين داخل الجدول */
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f9fa; /* لون خلفية مختلف للصفوف الزوجية */
 }
