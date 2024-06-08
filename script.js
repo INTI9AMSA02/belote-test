@@ -58,6 +58,44 @@ document.addEventListener("DOMContentLoaded", function() {
         checkWinner();
     });
 
+    function createEditButton(index) {
+        const editButton = document.createElement("button");
+        editButton.textContent = "تعديل";
+        editButton.classList.add("edit-round");
+        editButton.addEventListener("click", function() {
+            editRound(index);
+        });
+        return editButton;
+    }
+
+    function editRound(index) {
+        const round = rounds[index];
+        const team1Points = prompt(`تعديل نقاط ${team1Name} للجولة ${index + 1}:`, round.team1);
+        const team2Points = prompt(`تعديل نقاط ${team2Name} للجولة ${index + 1}:`, round.team2);
+
+        if (team1Points !== null && team2Points !== null) {
+            const team1PointsInt = parseInt(team1Points);
+            const team2PointsInt = parseInt(team2Points);
+
+            if (!isNaN(team1PointsInt) && !isNaN(team2PointsInt)) {
+                // تحديث النقاط
+                team1ScoreValue = team1ScoreValue - round.team1 + team1PointsInt;
+                team2ScoreValue = team2ScoreValue - round.team2 + team2PointsInt;
+
+                // تحديث الجولة في المصفوفة
+                rounds[index] = { team1: team1PointsInt, team2: team2PointsInt };
+
+                // تحديث النقاط على الشاشة
+                team1Score.textContent = team1ScoreValue;
+                team2Score.textContent = team2ScoreValue;
+
+                // تحديث الجدول
+                updateRoundsTable();
+                checkWinner();
+            }
+        }
+    }
+
     function checkWinner() {
         let winningTeam = null;
 
@@ -147,6 +185,9 @@ document.addEventListener("DOMContentLoaded", function() {
         rounds.forEach(function(round, index) {
             const row = document.createElement("tr");
             row.innerHTML = `<td>${index + 1}</td><td>${round.team1} (${team1Name})</td><td>${round.team2} (${team2Name})</td>`;
+            const editButtonCell = document.createElement("td");
+            editButtonCell.appendChild(createEditButton(index));
+            row.appendChild(editButtonCell);
             roundsTableBody.appendChild(row);
         });
     }
