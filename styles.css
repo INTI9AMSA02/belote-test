@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     direction: rtl;
-    background-color: #e9ecef; /* لون خلفية أفتح */
+    background-color: #e9ecef;
     margin: 0;
     padding: 0;
-    font-size: 16px; /* زيادة حجم الخط الأساسي */
+    font-size: 16px;
 }
 
 #app {
@@ -20,16 +20,16 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* زيادة الظل لتحسين التباين */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
     margin: auto;
 }
 
 h1 {
-    color: #212529; /* لون أغمق للنص */
+    color: #212529;
     margin-bottom: 20px;
-    font-size: 24px; /* زيادة حجم الخط للعنوان */
+    font-size: 24px;
 }
 
 .team {
@@ -40,51 +40,68 @@ label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-    font-size: 18px; /* زيادة حجم الخط لملصق */
+    font-size: 18px;
+}
+
+.team-info {
+    display: flex;
+    align-items: center;
 }
 
 input[type="text"],
 input[type="number"] {
-    padding: 10px; /* زيادة المساحة الداخلية للحقل */
+    padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ced4da; /* تغيير لون الحدود ليكون أكثر وضوحًا */
+    border: 1px solid #ced4da;
     margin-bottom: 10px;
     box-sizing: border-box;
-    width: calc(100% - 22px); /* تعديل العرض ليشمل الحواف الجديدة */
-    font-size: 24px; /* زيادة حجم الخط للحقل */
+    font-size: 24px;
+    height: 50px; /* تثبيت الارتفاع */
+}
+
+input[type="text"] {
+    width: 60%;
+}
+
+input[type="number"] {
+    width: calc(50% - 22px);
 }
 
 input[type="text"]::placeholder,
 input[type="number"]::placeholder {
-    color: #6c757d; /* لون أكثر وضوحًا للنص البديل */
+    color: #6c757d;
 }
 
 .score,
 .wins {
     display: inline-block;
-    min-width: 60px;
-    padding: 8px; /* زيادة المساحة الداخلية */
-    background-color: #e9ecef; /* لون خلفية أفتح */
+    min-width: 50px;
+    padding: 8px;
+    background-color: #e9ecef;
     border-radius: 5px;
     margin-left: 10px;
-    font-size: 28px; /* زيادة حجم الخط */
+    font-size: 24px;
+    height: 40px; /* تثبيت الارتفاع */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .actions {
     text-align: center;
-    margin-bottom: 10px; /* إضافة مسافة بين مجموعة الأزرار */
+    margin-bottom: 10px;
 }
 
 #add-points,
 .tease {
-    padding: 12px 24px; /* زيادة المساحة الداخلية للأزرار */
+    padding: 12px 24px;
     background-color: #007115;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 5px;
-    font-size: 20px; /* زيادة حجم الخط */
+    font-size: 20px;
 }
 
 #add-points:hover,
@@ -96,23 +113,46 @@ table {
     border-collapse: collapse;
     width: 100%;
     margin-top: 20px;
-    font-size: 16px; /* زيادة حجم الخط للنص داخل الجدول */
+    font-size: 16px;
 }
 
 th, td {
-    border: 1px solid #dee2e6; /* لون حدود أكثر وضوحًا */
-    padding: 12px; /* زيادة المساحة الداخلية للخلايا */
+    border: 1px solid #dee2e6;
+    padding: 12px;
     text-align: center;
 }
 
 th {
     background-color: #007bff;
     color: #fff;
-    font-size: 18px; /* زيادة حجم الخط للعناوين داخل الجدول */
+    font-size: 18px;
 }
 
 tr:nth-child(even) {
-    background-color: #f8f9fa; /* لون خلفية مختلف للصفوف الزوجية */
+    background-color: #f8f9fa;
+}
+
+#wins-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#wins-table th, #wins-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: center;
+}
+
+#wins-table th {
+    background-color: #28a745;
+    color: #fff;
+    font-size: 18px;
+}
+
+#wins-table tr:nth-child(even) {
+    background-color: #f8f9fa;
 }
 
 .flash {
