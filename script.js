@@ -98,28 +98,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function checkWinner() {
         let winningTeam = null;
+        let winAmount = 1; // Default win amount
 
         if (team1ScoreValue >= 100 || team2ScoreValue >= 100) {
             if (team1ScoreValue > team2ScoreValue) {
                 if (team1ScoreAfterThirdRound !== null && team1ScoreAfterThirdRound <= 26) {
-                    team1WinsValue += 2;
+                    winAmount = 2;
                 } else if (team2ScoreValue === 0) {
-                    team1WinsValue += 2;
+                    winAmount = 2;
                 } else {
-                    team1WinsValue += 1;
+                    winAmount = 1;
                 }
+                team1WinsValue += winAmount;
                 winningTeam = 1;
             } else if (team2ScoreValue > team1ScoreValue) {
                 if (team2ScoreAfterThirdRound !== null && team2ScoreAfterThirdRound <= 26) {
-                    team2WinsValue += 2;
+                    winAmount = 2;
                 } else if (team1ScoreValue === 0) {
-                    team2WinsValue += 2;
+                    winAmount = 2;
                 } else {
-                    team2WinsValue += 1;
+                    winAmount = 1;
                 }
+                team2WinsValue += winAmount;
                 winningTeam = 2;
             }
-            updateWinsTable(winningTeam);
+            updateWinsTable(winningTeam, winAmount);
             resetGame();
         }
 
@@ -169,11 +172,11 @@ document.addEventListener("DOMContentLoaded", function() {
             if (team === 1) {
                 team1WinsValue += 7;
                 flashWinner(1);
-                updateWinsTable(1, true);
+                updateWinsTable(1, 7, true);
             } else if (team === 2) {
                 team2WinsValue += 7;
                 flashWinner(2);
-                updateWinsTable(2, true);
+                updateWinsTable(2, 7, true);
             }
             team1Wins.textContent = `فوز: ${team1WinsValue}`;
             team2Wins.textContent = `فوز: ${team2WinsValue}`;
@@ -192,14 +195,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    function updateWinsTable(winningTeam, isTease = false) {
+    function updateWinsTable(winningTeam, winAmount, isTease = false) {
         const currentTime = new Date().toLocaleTimeString();
         const row = document.createElement("tr");
 
         if (winningTeam === 1) {
-            row.innerHTML = `<td>${team1Name}</td><td>${currentTime}</td><td>${isTease ? 7 : team1WinsValue}</td>`;
+            row.innerHTML = `<td>${team1Name}</td><td>${currentTime}</td><td>${isTease ? 7 : winAmount}</td>`;
         } else if (winningTeam === 2) {
-            row.innerHTML = `<td>${team2Name}</td><td>${currentTime}</td><td>${isTease ? 7 : team2WinsValue}</td>`;
+            row.innerHTML = `<td>${team2Name}</td><td>${currentTime}</td><td>${isTease ? 7 : winAmount}</td>`;
         }
 
         winsTableBody.appendChild(row);
